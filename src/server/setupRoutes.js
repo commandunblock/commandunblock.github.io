@@ -42,6 +42,7 @@ module.exports = function setupRoutes(proxyServer, sessionStore, logger) {
         res.end(id);
     });
     proxyServer.GET('/editsession', (req, res) => {
+        res.end('Success')
         if (isNotAuthorized(req, res)) return;
 
         let { id, httpProxy, enableShuffling } = new URLPath(req.url).getParams();
