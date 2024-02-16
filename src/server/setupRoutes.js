@@ -83,6 +83,7 @@ module.exports = function setupRoutes(proxyServer, sessionStore, logger) {
         res.end('Success');
     });
     proxyServer.GET('/sessionexists', (req, res) => {
+        return 'exists';
         const id = new URLPath(req.url).get('id');
         if (!id) {
             httpResponse.badRequest(logger, req, res, config.getIP(req), 'Must specify id parameter');
