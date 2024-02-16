@@ -4,7 +4,6 @@ node_modules/
 src/client/*.min.*
 src/client/hammerhead.js
 src/client/worker-hammerhead.js
-src/client/transport-worker.js
 .env
 
 # don't commit session and cache data

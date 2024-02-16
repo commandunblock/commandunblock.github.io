@@ -31,8 +31,7 @@ const proxyServer = new RammerheadProxy({
     ssl: config.ssl,
     getServerInfo: config.getServerInfo,
     disableLocalStorageSync: config.disableLocalStorageSync,
-    jsCache: config.jsCache,
-    disableHttp2: config.disableHttp2
+    jsCache: config.jsCache
 });
 
 if (config.publicDir) addStaticDirToProxy(proxyServer, config.publicDir);
@@ -124,7 +123,3 @@ if (config.enableWorkers) {
         logger.info(`Worker ${cluster.worker.id} is running`);
     }
 }
-
-// if you want to just extend the functionality of this proxy server, you can
-// easily do so using this. mainly used for debugging
-module.exports = proxyServer;
