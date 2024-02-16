@@ -38,7 +38,7 @@ module.exports = function setupRoutes(proxyServer, sessionStore, logger) {
         session.data.restrictIP = config.getIP(req);
 
         // workaround for saving the modified session to disk
-        sessionStore.addSerializedSession(id, session.serializeSession());
+        //sessionStore.addSerializedSession(id, session.serializeSession());
         res.end(id);
     });
     proxyServer.GET('/editsession', (req, res) => {
