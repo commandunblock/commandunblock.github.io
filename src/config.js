@@ -10,7 +10,7 @@ module.exports = {
     //// HOSTING CONFIGURATION ////
 
     bindingAddress: '127.0.0.1',
-    port: 8080,
+    port: process.env.PORT,
     crossDomainPort: 8081,
     publicDir: path.join(__dirname, '../public'), // set to null to disable
 
@@ -28,7 +28,7 @@ module.exports = {
     getServerInfo: () => ({ hostname: 'localhost', port: 8080, crossDomainPort: 8081, protocol: 'http:' }),
     // example of non-hard-coding the hostname header
     // getServerInfo: (req) => {
-    //     return { hostname: new URL('http://' + req.headers.host).hostname, port: 443, crossDomainPort: 8443, protocol: 'https: };
+    //     return { hostname: new URL('http://' + req.headers.host).hostname, port: 443, `crossDomainPort`: 8443, protocol: 'https: };
     // },
 
     // enforce a password for creating new sessions. set to null to disable
