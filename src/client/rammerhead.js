@@ -58,14 +58,10 @@
             }
             return;
         }
-        window.addEventListener('storage',(function(event){
+        proxiedLocalStorage.addChangeEventListener(function (event) {
             if (isSyncing) return;
             if (keyChanges.indexOf(event.key) === -1) keyChanges.push(event.key);
-        }))
-        //proxiedLocalStorage.addChangeEventListener(function (event) {
-        //    if (isSyncing) return;
-        //    if (keyChanges.indexOf(event.key) === -1) keyChanges.push(event.key);
-        //});
+        });
         setInterval(function () {
             var update = compileUpdate();
             if (!update) return;

@@ -38,11 +38,10 @@ module.exports = function setupRoutes(proxyServer, sessionStore, logger) {
         session.data.restrictIP = config.getIP(req);
 
         // workaround for saving the modified session to disk
-        //sessionStore.addSerializedSession(id, session.serializeSession());
+        sessionStore.addSerializedSession(id, session.serializeSession());
         res.end(id);
     });
     proxyServer.GET('/editsession', (req, res) => {
-        res.end('Success')
         if (isNotAuthorized(req, res)) return;
 
         let { id, httpProxy, enableShuffling } = new URLPath(req.url).getParams();
@@ -84,7 +83,6 @@ module.exports = function setupRoutes(proxyServer, sessionStore, logger) {
         res.end('Success');
     });
     proxyServer.GET('/sessionexists', (req, res) => {
-        res.end('exists');
         const id = new URLPath(req.url).get('id');
         if (!id) {
             httpResponse.badRequest(logger, req, res, config.getIP(req), 'Must specify id parameter');
